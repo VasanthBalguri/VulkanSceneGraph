@@ -245,11 +245,16 @@ void Wayland_Window::seat_capabilities(void *data, struct wl_seat *seat, uint32_
 
 void Wayland_Window::registry_add_object(void *data, struct wl_registry *registry, uint32_t id, const char *interface, uint32_t version) {
     Wayland_Window *window = static_cast<Wayland_Window*>(data);
+<<<<<<< HEAD
     Logger::Level level = Logger::LOGGER_DEBUG;
     log(level,"found interface ",interface);
     if (strcmp(interface,"wl_compositor") == 0) {
         window->_wlCompositor = static_cast<wl_compositor*>(wl_registry_bind (registry, id, &wl_compositor_interface, 1));
         log(level,"added interface ",interface);
+=======
+    if (strcmp(interface,"wl_compositor") == 0) {
+        window->_wlCompositor = static_cast<wl_compositor*>(wl_registry_bind (registry, id, &wl_compositor_interface, 1));
+>>>>>>> 4adb777f (Initial Wayland support)
     }
     /*else if (strcmp(interface, "wl_subcompositor") == 0) {
         subcompositor = static_cast<wl_subcompositor*>(wl_registry_bind(registry, name, &wl_subcompositor_interface, 1));
@@ -257,21 +262,33 @@ void Wayland_Window::registry_add_object(void *data, struct wl_registry *registr
     else if (strcmp(interface,"wl_seat") == 0) {
         window->_seat = static_cast<wl_seat*>(wl_registry_bind (registry, id, &wl_seat_interface, 1));
         wl_seat_add_listener (window->_seat, &seat_listener, data);
+<<<<<<< HEAD
         log(level,"added interface ",interface);
+=======
+>>>>>>> 4adb777f (Initial Wayland support)
     }
     else if (strcmp(interface, "wl_shm") == 0) {
         window->_shm = static_cast<wl_shm*>(wl_registry_bind(registry, id, &wl_shm_interface, version));
         window->_cursorTheme = wl_cursor_theme_load(nullptr, 16, window->_shm);
+<<<<<<< HEAD
         log(level,"added interface ",interface);
     }
     else if (strcmp(interface, xdg_wm_base_interface.name) == 0) {
         window->_xdgWmBase = static_cast<struct xdg_wm_base*>(wl_registry_bind(registry, id, &xdg_wm_base_interface, version));
         log(level,"added interface ",interface);
+=======
+    }
+    else if (strcmp(interface, xdg_wm_base_interface.name) == 0) {
+        window->_xdgWmBase = static_cast<struct xdg_wm_base*>(wl_registry_bind(registry, id, &xdg_wm_base_interface, version));
+>>>>>>> 4adb777f (Initial Wayland support)
     }
     else if (strcmp(interface, zxdg_decoration_manager_v1_interface.name) == 0)
     {
         window->_decorationManager = static_cast<zxdg_decoration_manager_v1 *>(wl_registry_bind(registry, id, &zxdg_decoration_manager_v1_interface, 1));
+<<<<<<< HEAD
         log(level,"added interface ",interface);
+=======
+>>>>>>> 4adb777f (Initial Wayland support)
     }
 }
 
